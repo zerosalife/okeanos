@@ -4,14 +4,16 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
   private bool canSpawn;
   private Vector3 currentPosition;
-  private int playerLevel;
+  public int playerLevel;
   public float moveSpeed = 1.5f;
+  private int experiencePoints;
 
   // Use this for initialization
   void Start () {
     currentPosition = gameObject.transform.position;
 
-    // playerLevel = 1;
+    playerLevel = 1;
+    experiencePoints = 0;
   }
 
   // Update is called once per frame
@@ -26,10 +28,29 @@ public class PlayerController : MonoBehaviour {
   }
 
   void AddExperience(int points) {
-    Debug.Log(points);
+    // Add experience points, then check for level up.
+    experiencePoints += points;
+    CheckLevelUp();
+  }
+
+  void CheckLevelUp() {
+    int increment = Mathf.Min(playerLevel - 2, 0);
+    Debug.Log("Incremet: " + increment);
+    int threshold = Mathf.Min(increment + (playerLevel / 2), 1);
+    Debug.Log("Threshold: " + threshold);
+    if (experiencePoints >= threshold) {
+      LevelUp();
+    }
+  }
+
+  void LevelUp() {
+    experiencePoints = 0;
+    playerLevel++;
+    Debug.Log("Level: " + playerLevel);
   }
 
   void Knockback(Vector3 distance) {
+    // Knock the player back by `distance'.
     transform.position = currentPosition + distance;
     currentPosition = transform.position;
   }

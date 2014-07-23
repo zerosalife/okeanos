@@ -27,17 +27,23 @@ public class BlueFishController : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
+
     currentPosition = transform.position;
+
+    // Change direction to a random direction.
     if(changeDirection == true) {
       currentDirection = RandomMoveDirection();
       changeDirection = false;
     }
 
+    // Move toward a desired target in the current direction.
     Vector3 target = currentDirection * moveSpeed + currentPosition;
     transform.position = Vector3.Lerp(currentPosition, target, Time.deltaTime);
 
+    // Only change direction 20% of the time.
     if(changeDirection == false) {
-      if (Random.Range(0, 100) > 80) {
+      if (Random.Range(0, 100) > 79) { // Subtract 1 from 80 because
+                                       // of 0.
         changeDirection = true;
       }
     }
@@ -45,16 +51,28 @@ public class BlueFishController : MonoBehaviour {
   }
 
   void OnTriggerEnter2D(Collider2D collision) {
+    // If we collide with the player, add our experience points
+    // `experiencePoints' to the player's experience, knock the player
+    // back by `knockbackAmount', and destroy ourself.
     if(collision.gameObject.tag == "Player") {
       GameObject playerObject = GameObject.FindGameObjectsWithTag("Player")[0];
-      playerObject.SendMessage("AddExperience", experiencePoints);
-      playerObject.SendMessage("Knockback", knockback);
+      PlayerController playerScript = playerObject.GetComponent<PlayerController>();
 
-      Destroy(this.gameObject);
+      // If the player has a higher level than our experience points,
+      // we dead.  TODO: Consider having a separate `enemyLevel'
+      // variable?
+      if (playerScript.playerLevel >= experiencePoints) {
+        playerObject.SendMessage("AddExperience", experiencePoints);
+        playerObject.SendMessage("Knockback", knockback);
+
+        Destroy(this.gameObject);
+      }
     }
   }
 
   Vector3 RandomMoveDirection() {
+    // Choose a random direction to move in.  Typically called to
+    // change `currentDirection'.
     Vector3 direction = Vector3.zero;
     switch(Flip()) {
     case 0:
