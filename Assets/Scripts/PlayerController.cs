@@ -34,11 +34,10 @@ public class PlayerController : MonoBehaviour {
   }
 
   void CheckLevelUp() {
-    int increment = Mathf.Min(playerLevel - 2, 0);
-    Debug.Log("Incremet: " + increment);
-    int threshold = Mathf.Min(increment + (playerLevel / 2), 1);
-    Debug.Log("Threshold: " + threshold);
-    if (experiencePoints >= threshold) {
+    int cutoff = (int)Mathf.Ceil(Mathf.Pow((float)playerLevel,1.5f));
+    Debug.Log("Cutoff: " + cutoff);
+    Debug.Log("Current xp: " + experiencePoints);
+    if (experiencePoints >= cutoff) {
       LevelUp();
     }
   }
