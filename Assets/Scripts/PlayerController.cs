@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
   void Start () {
     currentPosition = gameObject.transform.position;
 
-    playerLevel = 1;
+    // playerLevel = 1;
     experiencePoints = 0;
   }
 
