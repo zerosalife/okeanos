@@ -24,7 +24,15 @@ public class PlayerController : MonoBehaviour {
     Vector3 target = Vector3.up * moveSpeed + currentPosition;
     transform.position = Vector3.Lerp(currentPosition, target, Time.deltaTime);
 
+    // If we're off the top of the screen, go to the next screen.
+    if(currentPosition.y >= 5.5) {
+      Application.LoadLevel("Level02");
+    }
 
+  }
+
+  void Die() {
+    Application.LoadLevel("Gameover");
   }
 
   void AddExperience(int points) {

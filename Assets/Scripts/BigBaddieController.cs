@@ -30,6 +30,7 @@ public class BigBaddieController: MonoBehaviour {
           Destroy(this.gameObject);
 
           // Go to win scene.
+          Application.LoadLevel("WinScreen");
         }
 
         playerObject.SendMessage("Knockback", knockback);

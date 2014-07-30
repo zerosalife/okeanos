@@ -66,6 +66,8 @@ public class BlueFishController : MonoBehaviour {
         playerObject.SendMessage("Knockback", knockback);
 
         Destroy(this.gameObject);
+      } else if(playerScript.playerLevel < experiencePoints) {
+        playerObject.SendMessage("Die");
       }
     }
   }
