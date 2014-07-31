@@ -4,16 +4,13 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
   private bool canSpawn;
   private Vector3 currentPosition;
-  public int playerLevel;
   public float moveSpeed = 1.5f;
-  private int experiencePoints;
 
   // Use this for initialization
   void Start () {
     currentPosition = gameObject.transform.position;
 
     // playerLevel = 1;
-    experiencePoints = 0;
   }
 
   // Update is called once per frame
@@ -37,12 +34,14 @@ public class PlayerController : MonoBehaviour {
 
   void AddExperience(int points) {
     // Add experience points, then check for level up.
-    experiencePoints += points;
+    GameController.control.experiencePoints += points;
     CheckLevelUp();
   }
 
   void CheckLevelUp() {
-    int cutoff = (int)Mathf.Ceil(Mathf.Pow((float)playerLevel,1.5f));
+    int playerLevel = GameController.control.playerLevel;
+    int experiencePoints = GameController.control.experiencePoints;
+    int cutoff = (int)Mathf.Ceil(Mathf.Pow((float)playerLevel, 1.5f));
     Debug.Log("Cutoff: " + cutoff);
     Debug.Log("Current xp: " + experiencePoints);
     if (experiencePoints >= cutoff) {
@@ -51,9 +50,9 @@ public class PlayerController : MonoBehaviour {
   }
 
   void LevelUp() {
-    experiencePoints = 0;
-    playerLevel++;
-    Debug.Log("Level: " + playerLevel);
+    GameController.control.experiencePoints = 0;
+    GameController.control.playerLevel++;
+    Debug.Log("Level: " + GameController.control.playerLevel);
   }
 
   void Knockback(Vector3 distance) {

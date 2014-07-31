@@ -17,9 +17,10 @@ public class BigBaddieController: MonoBehaviour {
   void OnTriggerEnter2D(Collider2D collision) {
     if(collision.gameObject.tag == "Player") {
       GameObject playerObject = GameObject.FindGameObjectsWithTag("Player")[0];
-      PlayerController playerScript = playerObject.GetComponent<PlayerController>();
 
-      if(playerScript.playerLevel >= enemyLevel) {
+      int playerLevel = GameController.control.playerLevel;
+
+      if(playerLevel >= enemyLevel) {
         // We got hit, subtract a level from the player, reduce
         // hitsRequired and enemyLevel, and knockback
         hitsRequired--;
@@ -37,7 +38,7 @@ public class BigBaddieController: MonoBehaviour {
       } else // if(playerScript.playerLevel < enemyLevel)
           {
         Debug.Log("Player should die. playerLevel: " +
-                  playerScript.playerLevel + " enemyLevel: " +
+                  playerLevel + " enemyLevel: " +
                   enemyLevel);
         // Go to gameover scene.
       }

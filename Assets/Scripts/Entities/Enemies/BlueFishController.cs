@@ -56,17 +56,21 @@ public class BlueFishController : MonoBehaviour {
     // back by `knockbackAmount', and destroy ourself.
     if(collision.gameObject.tag == "Player") {
       GameObject playerObject = GameObject.FindGameObjectsWithTag("Player")[0];
-      PlayerController playerScript = playerObject.GetComponent<PlayerController>();
+
+      Debug.Log(GameController.control);
 
       // If the player has a higher level than our experience points,
       // we dead.  TODO: Consider having a separate `enemyLevel'
       // variable?
-      if (playerScript.playerLevel >= experiencePoints) {
+      if (GameController.control.playerLevel >= experiencePoints) {
+        // Is the player stronger than our experience level?  Then we
+        // die.
         playerObject.SendMessage("AddExperience", experiencePoints);
         playerObject.SendMessage("Knockback", knockback);
 
         Destroy(this.gameObject);
-      } else if(playerScript.playerLevel < experiencePoints) {
+      } else if(GameController.control.playerLevel < experiencePoints) {
+        // We are stronger than the player. So, kill the player.
         playerObject.SendMessage("Die");
       }
     }
