@@ -14,6 +14,7 @@ public class GameController: MonoBehaviour {
   void Awake() {
     if(control == null) {
       DontDestroyOnLoad(gameObject);
+      control = this;
     } else if(control != this) {
       // There can be only one!
       Destroy(gameObject);
