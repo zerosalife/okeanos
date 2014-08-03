@@ -41,6 +41,7 @@ public class BigBaddieController: MonoBehaviour {
                   playerLevel + " enemyLevel: " +
                   enemyLevel);
         // Go to gameover scene.
+        Application.LoadLevel("WinScreen");
       }
     }
   }
