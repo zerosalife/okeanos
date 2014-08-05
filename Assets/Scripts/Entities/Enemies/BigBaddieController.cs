@@ -6,7 +6,7 @@ public class BigBaddieController: MonoBehaviour {
   public int hitsRequired;
   public int enemyLevel;    // The effective level required to hit the
                             // BigBaddie
-
+  public int enemyScore;
   public float knockbackAmount;
   private Vector3 knockback;
 
@@ -35,6 +35,7 @@ public class BigBaddieController: MonoBehaviour {
         }
 
         playerObject.SendMessage("Knockback", knockback);
+        GameController.control.score += enemyScore;
       } else // if(playerScript.playerLevel < enemyLevel)
           {
         Debug.Log("Player should die. playerLevel: " +

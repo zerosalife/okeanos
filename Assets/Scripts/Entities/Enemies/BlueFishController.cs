@@ -9,6 +9,7 @@ public class BlueFishController : MonoBehaviour {
   private bool changeDirection;
 
   public int experiencePoints = 1;
+  public int score;
 
   public float knockbackAmount;
   private Vector3 knockback;
@@ -67,6 +68,7 @@ public class BlueFishController : MonoBehaviour {
         // die.
         playerObject.SendMessage("AddExperience", experiencePoints);
         playerObject.SendMessage("Knockback", knockback);
+        GameController.control.score += score;
 
         Destroy(this.gameObject);
       } else if(GameController.control.playerLevel < experiencePoints) {
