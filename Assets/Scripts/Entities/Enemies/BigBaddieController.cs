@@ -8,6 +8,7 @@ public class BigBaddieController: MonoBehaviour {
                             // BigBaddie
   public int enemyScore;
   public float knockbackAmount;
+  public GameObject hitCounterControllerObject;
   private Vector3 knockback;
 
   void Start() {
@@ -21,9 +22,10 @@ public class BigBaddieController: MonoBehaviour {
       int playerLevel = GameController.control.playerLevel;
 
       if(playerLevel >= enemyLevel) {
-        // We got hit, subtract a level from the player, reduce
-        // hitsRequired and enemyLevel, and knockback
+        // We got hit, reduce hitsRequired, increase enemyLevel, and
+        // knockback
         hitsRequired--;
+        hitCounterControllerObject.SendMessage("DestroyHitCounter");
         enemyLevel++;
 
         // Check for death

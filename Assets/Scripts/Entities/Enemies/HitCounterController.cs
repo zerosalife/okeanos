@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class HitCounterController : MonoBehaviour {
   public GameObject hitCounterPrefab;
-  private List<GameObject> hitCounters = new List<GameObject>();
+  public List<GameObject> hitCounters = new List<GameObject>();
 
   public GameObject baseEnemy;
   private Transform baseTransform;
@@ -20,6 +20,12 @@ public class HitCounterController : MonoBehaviour {
   void SpawnHitCounters(int numberToSpawn) {
     // Spawn a number of hitCounterPrefab GameObjects and add them to
     // the hitCounters list.
+  }
+
+  void DestroyHitCounter() {
+    GameObject hc = hitCounters[0];
+    hitCounters.RemoveAt(0);
+    Destroy(hc);
   }
 
 
