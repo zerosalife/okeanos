@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour {
   }
 
   void Die() {
-    Application.LoadLevel("Gameover");
+    // Application.LoadLevel("Gameover");
+    Application.LoadLevel("WinScreen");
   }
 
   void AddExperience(int points) {

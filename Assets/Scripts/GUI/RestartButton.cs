@@ -13,4 +13,10 @@ public class RestartButton: MonoBehaviour {
     }
 
   }
+
+  void OnDestroy() {
+    // Clear out unnecessary static instance variables (Singletons)
+    // because we're restarting the game.
+    GameController.control = null;
+  }
 }
