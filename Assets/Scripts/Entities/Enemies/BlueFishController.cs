@@ -14,6 +14,10 @@ public class BlueFishController : MonoBehaviour {
   public float knockbackAmount;
   private Vector3 knockback;
 
+  public AudioClip enemyHit;
+
+  private bool alreadyCollided = false;
+
   // Use this for initialization
   void Start () {
     currentPosition = transform.position;
@@ -51,11 +55,11 @@ public class BlueFishController : MonoBehaviour {
 
   }
 
-  void OnTriggerEnter2D(Collider2D collision) {
+  IEnumerator OnTriggerEnter2D(Collider2D collision) {
     // If we collide with the player, add our experience points
     // `experiencePoints' to the player's experience, knock the player
     // back by `knockbackAmount', and destroy ourself.
-    if(collision.gameObject.tag == "Player") {
+    if(collision.gameObject.tag == "Player" & !alreadyCollided) {
       GameObject playerObject = GameObject.FindGameObjectsWithTag("Player")[0];
 
       Debug.Log(GameController.control);
@@ -66,10 +70,19 @@ public class BlueFishController : MonoBehaviour {
       if (GameController.control.playerLevel >= experiencePoints) {
         // Is the player stronger than our experience level?  Then we
         // die.
+
+        audio.PlayOneShot(enemyHit);
+        // TODO: FIXME: Refactor to remove AddExperience method from
+        // player, seems like it's too complicated.  Just go ahead and
+        // add experience directly to the GameController.control, just
+        // like we do with the score below.
         playerObject.SendMessage("AddExperience", experiencePoints);
         playerObject.SendMessage("Knockback", knockback);
         GameController.control.score += score;
 
+        gameObject.renderer.enabled = false; // Make the sprite disappear.
+        alreadyCollided = true;
+        yield return new WaitForSeconds(0.136f); // Wait for the audio to play.
         Destroy(this.gameObject);
       } else if(GameController.control.playerLevel < experiencePoints) {
         // We are stronger than the player. So, kill the player.

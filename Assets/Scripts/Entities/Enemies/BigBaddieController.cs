@@ -11,11 +11,13 @@ public class BigBaddieController: MonoBehaviour {
   public GameObject hitCounterControllerObject;
   private Vector3 knockback;
 
+  public AudioClip bigEnemyHit;
+
   void Start() {
     knockback = knockbackAmount * Vector3.down;
   }
 
-  void OnTriggerEnter2D(Collider2D collision) {
+  IEnumerator OnTriggerEnter2D(Collider2D collision) {
     if(collision.gameObject.tag == "Player") {
       GameObject playerObject = GameObject.FindGameObjectsWithTag("Player")[0];
 
@@ -26,10 +28,14 @@ public class BigBaddieController: MonoBehaviour {
         // knockback
         hitsRequired--;
         hitCounterControllerObject.SendMessage("DestroyHitCounter");
+        audio.PlayOneShot(bigEnemyHit);
         enemyLevel++;
 
-        // Check for death
+        GameController.control.score += enemyScore;
+        // Check for our death.
         if(hitsRequired <= 0) {
+          gameObject.renderer.enabled = false; // Make the sprite disappear.
+          yield return new WaitForSeconds(0.397f);
           Destroy(this.gameObject);
 
           // Go to win scene.
@@ -37,8 +43,10 @@ public class BigBaddieController: MonoBehaviour {
         }
 
         playerObject.SendMessage("Knockback", knockback);
-        GameController.control.score += enemyScore;
+
+
       } else // if(playerScript.playerLevel < enemyLevel)
+        // The player should die
           {
         Debug.Log("Player should die. playerLevel: " +
                   playerLevel + " enemyLevel: " +
