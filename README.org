@@ -1,0 +1,152 @@
+* Okeanos
+* Design Notes
+** Theme
+You gather fish into a school that gets eaten by a bigger fish at the
+end of each level.  the fish you've gathered become your ammo stock
+for launching pachinko balls at the next level.
+
+Fish
+
+Trail of bubbles to indicate PC fish
+
+Big whale shark comes from the side and eats you to transport to the
+next board.
+
+Big turtle, you ride its shell, could function like a water current.
+
+Seaweed forests.
+
+Coral reef with eels that come out and grab you.  How to make eels
+interesting?  Go to one side a long distance, potentially go to the
+other side the same distance, go to both sides a shorter distance.
+Could do any of those three moves, unpredictable.
+
+Electric eels
+
+flounders
+
+sting rays, could fly on sting rays.
+
+Sharks are enemies
+
+Tuna are bigger fish
+
+squid
+
+pelican
+
+lobsters
+
+puffer fish
+
+Whirlpool
+
+jelly fish
+
+seals
+
+otters
+
+Clams
+
+When you die, a lot of other fish come in from off-screen and eat the
+PC, causing it to dissolve and become bones.
+
+*** Terrain
+water currents that transport you quickly, maybe laterally?
+** Power ups
+
+*** Shield
+Grants 1 free hit.  If colliding with an enemy would normally kill
+you, kill the enemy, grant the player experience.
+
+Could prototype by simply granting 1 free level.
+
+May be able to implement by swapping out component handling the player
+colliding with enemies for a shield component.  Both of these
+components would have methods that receive HandleCollision messages.
+See:
+file://localhost/Applications/Unity/Documentation/ScriptReference/GameObject.SendMessage.html
+
+*** Weapon
+Grants 1 free level.
+
+* First Prototype
+To finish up
+- [X] Test level up system - First pass
+- [X] Separate Scene for Big Baddie fight.
+- [X] Implement Big Baddie
+  - (requires player to be level 3 to kill, starts at enemyLevel 1,
+    instead of being destroyed gains levels upon hits, if enemyLevel 3
+    and hit then dies.)
+- [X] End state for game.
+  - [X] Winning
+    - It's just a basic gameover with a restart button
+- [X] Opening
+  - [X] Loop winning and Gameover back to opening via Start Over
+    button.
+- [-] Implement transition between scenes
+  - GameManager?
+  - [ ] Public facing getters and setters, keep variables private.
+  - [X] Saving and loading state.
+  - [[http://docs.unity3d.com/ScriptReference/PlayerPrefs.html]]?
+    - [[http://www.theappguruz.com/tutorial/store-vector3-data-easily-using-json-parsing-possible-using-playerprefs/][How to store a Vector3 using PlayerPrefs, may not be the best]]
+    - [[http://wiki.unity3d.com/index.php?title%3DArrayPrefs][http://wiki.unity3d.com/index.php?title=ArrayPrefs]]
+    - [[http://answers.unity3d.com/questions/27973/idiots-guide-to-player-prefs.html]]
+    - [[http://wiki.unity3d.com/index.php/ArrayPrefs2]]
+    - [[http://www.previewlabs.com/writing-playerprefs-fast/]]
+    - [[http://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/persistence-data-saving-loading]]
+- [X] Clean up git.
+- [X] Refactor code to use GameManager.
+- [-] Orbs floating around big baddie to communicate required
+  hits-to-kill remaining. (i.e. if the baddie starts at enemyLevel 1
+  and requires enemyLevel 3 to be killed, 3 orbs counting down with
+  each hit.)
+  - [[http://www.helixsoft.nl/articles/circle/sincos.htm]]
+  - [[http://unitygems.com/basic-ai-space-shooter/]]
+  - [X] For now do it the easy way, stup.
+  - [-] HitCounterController Script attached to empty gameobject
+    - [X] Has a HitCounter prefab
+    - [ ] Receive message from BigBaddie to spawn number of HitCounters
+      - =transform.RotateAround= will probably be helpful.
+    - [X] Store a list of HitCounters in order (clockwise or
+      counterclockwise).
+    - [X] Receive message from BigBaddie to destroy HitCounter
+    - [X] Add a real sprite.
+- [X] Display Score, Level, Exp
+- [ ] Main theme upbeat, lively, boppy, sort of like zelda overworld
+  theme.
+  - [ ] Placeholder music in
+- [ ] Opening music sort of like Chrono Trigger, sounds of waves
+  (noise synths) fading into subdued theme.
+  - Try Operator/Effects/Wind Machine
+  - 2 tracks, one for crash and the other for whoosh of waves
+    leaving.
+- [-] SFX
+  - [X] Hitting enemy.
+  - [X] Hitting big enemy.
+  - [ ] Enemy death.
+  - [ ] Scene transition
+  - [ ] Player Death.
+- [ ] license
+- [ ] add Ideas to .gitignore
+- [ ] Refactor Player class to be PC to reflect the fact that if this
+  thang is Pachinko-like, the player will be able to spawn multiple
+  PCs with clicks.
+  - PCSpawner singleton?
+- [ ] Refactor Big Enemy class to Boss.
+- [ ] Enemy death animation via a delegate function that controls
+  movement in the Update method.
+- [ ] Dynamic PC placement by clicking.
+- [ ] Dynamic enemy placement.
+- [ ] Background
+- [ ] Winning screen
+- [ ] Change winning and gameover from scenes to a simple overlay
+  script attached to the GameManager script that activates at the
+  right time to show the score.
+- [ ] Gameover
+  - When you die, a lot of other fish come in from off-screen and
+    eat the PC, causing it to dissolve and become bones.
+  - [ ] use modal dialog to display score so the background scene
+    remains on the screen.
+- [ ] scale buttons to screen size
