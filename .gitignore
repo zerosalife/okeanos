@@ -23,3 +23,6 @@ build_Data/
 [Tt]humbs.db
 *~
 *#*
+
+Assets/Ideas/*
+Assets/Ideas.meta
