@@ -3,10 +3,12 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
   public static PlayerController pcontrol;
-  private bool canSpawn;
-  private bool swimming;   // To track whether the player has begun his fishy journey
+  private bool _canSpawn;
+  private bool _swimming;   // To track whether the player has begun his fishy journey
   private Vector3 currentPosition;
   public float moveSpeed = 1.5f;
+
+
 
   void Awake() {
     if(pcontrol == null) {
@@ -29,7 +31,7 @@ public class PlayerController : MonoBehaviour {
   void Update () {
     currentPosition = transform.position;
 
-    if(swimming) {
+    if(_swimming) {
       // Always march up.
       Vector3 target = Vector3.up * moveSpeed + currentPosition;
       transform.position = Vector3.Lerp(currentPosition, target, Time.deltaTime);
@@ -43,17 +45,22 @@ public class PlayerController : MonoBehaviour {
         Die();
       }
     }
-    else if (Application.loadedLevelName.Equals("Level01")) { //the player is still allowed to pick a starting X
-      Vector3 mPos = Input.mousePosition;
-      mPos = Camera.main.ScreenToWorldPoint(mPos);
-      transform.position = new Vector3(mPos.x, transform.position.y, transform.position.z);
-      
-      if (Input.GetButtonDown("Fire1")){
-        swimming = true;
-      }
-    }
   }
 
+
+
+  ///////////////////////////
+  //// Setters & Getters   //
+  /////////////////////////// 
+
+  public bool Swimming {
+    get { return this._swimming; }
+    set { this._swimming = value; }
+  }
+
+  ///////////////////////////
+  //// Our Utility Methods 
+  ///////////////////////////
 
   void Die() {
     // Application.LoadLevel("Gameover");
