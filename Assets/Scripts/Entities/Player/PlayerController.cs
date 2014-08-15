@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour {
     // Application.LoadLevel("Gameover");
     Destroy(this.gameObject);
     Debug.Log("Player was destroyed");
-    //Application.LoadLevel("WinScreen");
+    Application.LoadLevel("WinScreen");
   }
 
   void AddExperience(int points) {

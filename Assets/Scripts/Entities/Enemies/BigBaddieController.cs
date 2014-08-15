@@ -40,7 +40,6 @@ public class BigBaddieController: MonoBehaviour {
 
           // Go to win scene and destroy player.
           playerObject.SendMessage("Die");
-          //Application.LoadLevel("WinScreen");
         }
 
         playerObject.SendMessage("Knockback", knockback);
@@ -51,8 +50,6 @@ public class BigBaddieController: MonoBehaviour {
                   playerLevel + " enemyLevel: " +
                   enemyLevel);
         playerObject.SendMessage("Die");
-        // Go to gameover scene.
-        Application.LoadLevel("WinScreen");
       }
     }
   }
