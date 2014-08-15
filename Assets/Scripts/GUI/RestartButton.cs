@@ -3,6 +3,10 @@ using System.Collections;
 
 public class RestartButton: MonoBehaviour {
 
+  void Awake() {
+    PCSpawner.spawner.Clear();
+  }
+
   void OnGUI() {
     GUI.Label(new Rect(Screen.width / 2 - 30, 60, 100, 30), "Game Over");
     GUI.Label(new Rect(Screen.width / 2 - 35, 80, 100, 30), "Score: " +
