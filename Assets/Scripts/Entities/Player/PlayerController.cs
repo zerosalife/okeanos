@@ -3,11 +3,20 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
   public static PlayerController pcontrol;
+<<<<<<< HEAD
   private bool canSpawn;
   private bool swimming;   // To track whether the player has begun his fishy journey
   private Vector3 currentPosition;
   public float moveSpeed = 1.5f;
 
+=======
+  private bool _canSpawn;
+  private bool _swimming;   // To track whether the player has begun his fishy journey
+  private Vector3 currentPosition;
+  public float moveSpeed = 1.5f;
+
+
+>>>>>>> temp
   void Awake() {
     if(pcontrol == null) {
       DontDestroyOnLoad(gameObject);
@@ -29,7 +38,11 @@ public class PlayerController : MonoBehaviour {
   void Update () {
     currentPosition = transform.position;
 
+<<<<<<< HEAD
     if(swimming) {
+=======
+    if(_swimming) {
+>>>>>>> temp
       // Always march up.
       Vector3 target = Vector3.up * moveSpeed + currentPosition;
       transform.position = Vector3.Lerp(currentPosition, target, Time.deltaTime);
@@ -38,6 +51,7 @@ public class PlayerController : MonoBehaviour {
       if(currentPosition.y >= 5.5 && Application.loadedLevelName.Equals("Level01")) {
         Application.LoadLevel("Level02");
         transform.position = new Vector3(0f, -4f, 0f);
+<<<<<<< HEAD
       } //If we're off the top of the boss screen, the game is over!
       else if (currentPosition.y >= 5.5 && Application.loadedLevelName.Equals("Level02")) {
         Die();
@@ -55,8 +69,30 @@ public class PlayerController : MonoBehaviour {
   }
 
 
+=======
+      }
+    }
+  }
+
+
+
+  ///////////////////////////
+  //// Setters & Getters   //
+  /////////////////////////// 
+
+  public bool Swimming {
+    get { return this._swimming; }
+    set { this._swimming = value; }
+  }
+
+  ///////////////////////////
+  //// Our Utility Methods 
+  ///////////////////////////
+>>>>>>> temp
   void Die() {
     // Application.LoadLevel("Gameover");
+    Destroy(this.gameObject);
+    Debug.Log("Player was destroyed");
     Application.LoadLevel("WinScreen");
   }
 

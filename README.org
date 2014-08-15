@@ -128,8 +128,8 @@ To finish up
   - [ ] Enemy death.
   - [ ] Scene transition
   - [ ] Player Death.
-- [ ] license
-- [ ] add Ideas to .gitignore
+- [X] license
+- [X] add Ideas to .gitignore
 - [ ] Refactor Player class to be PC to reflect the fact that if this
   thang is Pachinko-like, the player will be able to spawn multiple
   PCs with clicks.
