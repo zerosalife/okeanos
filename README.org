@@ -1,4 +1,6 @@
 * Okeanos
+Okeanos is a work-in-progress prototype.
+
 * Design Notes
 ** Theme
 You gather fish into a school that gets eaten by a bigger fish at the
@@ -137,7 +139,7 @@ To finish up
 - [ ] Refactor Big Enemy class to Boss.
 - [ ] Enemy death animation via a delegate function that controls
   movement in the Update method.
-- [ ] Dynamic PC placement by clicking.
+- [X] Dynamic PC placement by clicking.
 - [ ] Dynamic enemy placement.
 - [ ] Background
 - [ ] Winning screen
@@ -150,3 +152,6 @@ To finish up
   - [ ] use modal dialog to display score so the background scene
     remains on the screen.
 - [ ] scale buttons to screen size
+- [ ] Animate fish when it spawns so it's clear there was some
+  interaction by the player.
+- [ ] Add V0.2 tag / milestone
