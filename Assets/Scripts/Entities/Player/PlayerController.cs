@@ -40,9 +40,6 @@ public class PlayerController : MonoBehaviour {
       if(currentPosition.y >= 5.5 && Application.loadedLevelName.Equals("Level01")) {
         Application.LoadLevel("Level02");
         transform.position = new Vector3(0f, -4f, 0f);
-      } //If we're off the top of the boss screen, the game is over!
-      else if (currentPosition.y >= 5.5 && Application.loadedLevelName.Equals("Level02")) {
-        Die();
       }
     }
   }
@@ -64,7 +61,9 @@ public class PlayerController : MonoBehaviour {
 
   void Die() {
     // Application.LoadLevel("Gameover");
-    Application.LoadLevel("WinScreen");
+    Destroy(this.gameObject);
+    Debug.Log("Player was destroyed");
+    //Application.LoadLevel("WinScreen");
   }
 
   void AddExperience(int points) {

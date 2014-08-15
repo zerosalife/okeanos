@@ -38,19 +38,19 @@ public class BigBaddieController: MonoBehaviour {
           yield return new WaitForSeconds(0.397f);
           Destroy(this.gameObject);
 
-          // Go to win scene.
-          Application.LoadLevel("WinScreen");
+          // Go to win scene and destroy player.
+          playerObject.SendMessage("Die");
+          //Application.LoadLevel("WinScreen");
         }
 
         playerObject.SendMessage("Knockback", knockback);
 
-
-      } else // if(playerScript.playerLevel < enemyLevel)
-        // The player should die
-          {
+      } 
+      else {
         Debug.Log("Player should die. playerLevel: " +
                   playerLevel + " enemyLevel: " +
                   enemyLevel);
+        playerObject.SendMessage("Die");
         // Go to gameover scene.
         Application.LoadLevel("WinScreen");
       }
