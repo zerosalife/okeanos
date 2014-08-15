@@ -37,5 +37,24 @@ public class BlueFishMovement : MonoBehaviour {
         changeDirection = true;
       }
     }
-
   }
+  Vector3 RandomMoveDirection() {
+    // Choose a random direction to move in.  Typically called to
+    // change `currentDirection'.
+    Vector3 direction = Vector3.zero;
+    switch(Flip()) {
+    case 0:
+      direction = Vector3.right;
+      break;
+    case 1:
+      direction = Vector3.left;
+      break;
+    }
+    return direction;
+  }
+
+  int Flip() {
+    // Simulate a coin flip to produce 50:50 chance of [0, 1]
+    return Random.Range(0, 2);
+  }
+}
