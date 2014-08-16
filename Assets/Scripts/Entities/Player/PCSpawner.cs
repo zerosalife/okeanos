@@ -9,6 +9,8 @@ public class PCSpawner : MonoBehaviour {
   public GameObject playerObject;
   public bool canSpawn;
   private float playerSpawnY = -4.259603f;
+  private float playerSpawnX = 0f;
+  private PlayerController pc;
   public bool isSwimming;
 
   void Awake() {
@@ -25,6 +27,12 @@ public class PCSpawner : MonoBehaviour {
   void Start () {
     isSwimming = false;
     canSpawn = true;
+    playerObject = Instantiate(playerPrefab,
+                               new Vector3(playerSpawnX, playerSpawnY, 0f),
+                               Quaternion.identity) as GameObject;
+    pc = playerObject.GetComponent<PlayerController>();
+    pc.enabled = false;
+
   }
 
   // Update is called once per frame
@@ -36,12 +44,10 @@ public class PCSpawner : MonoBehaviour {
 
       //the player hits the left mouse button to select the X position
       if (Input.GetButtonDown("Fire1")){
-        playerObject = Instantiate(playerPrefab,
-                                   new Vector3(0f, -70.259603f, 0f),
-                                   Quaternion.identity) as GameObject;
         playerObject.transform.position = new Vector3(mPos.x,
                                                       playerSpawnY,
                                                       0f);
+        pc.enabled = true;
         isSwimming = true;
       }
     }
