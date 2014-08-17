@@ -139,8 +139,8 @@ To finish up
 - [ ] Refactor Big Enemy class to Boss.
 - [ ] Enemy death animation via a delegate function that controls
   movement in the Update method.
+- [ ] Pop up with exp gained when enemies are killed
 - [X] Dynamic PC placement by clicking.
-- [ ] Dynamic enemy placement.
 - [ ] Background
 - [ ] Winning screen
 - [ ] Change winning and gameover from scenes to a simple overlay
@@ -151,7 +151,11 @@ To finish up
     eat the PC, causing it to dissolve and become bones.
   - [ ] use modal dialog to display score so the background scene
     remains on the screen.
+  - May be as simple as adding UI stuff to a layer on top of
+    everything else?
+- [ ] Screenshake when the player dies
 - [ ] scale buttons to screen size
 - [ ] Animate fish when it spawns so it's clear there was some
   interaction by the player.
+- [ ] Dynamic enemy placement.
 - [ ] Add V0.2 tag / milestone
