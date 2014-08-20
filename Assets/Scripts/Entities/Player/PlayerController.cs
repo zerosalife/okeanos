@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour {
 
   void Knockback(Vector3 distance) {
     // Knock the player back by `distance'.
+    GameController.control.Sleep(0.2f);
     transform.position = currentPosition + distance;
     currentPosition = transform.position;
   }

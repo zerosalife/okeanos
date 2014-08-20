@@ -10,6 +10,9 @@ public class GameController: MonoBehaviour {
   public int experiencePoints;
   public int playerLevel;
   public int score;
+  private bool sleep = false;
+  private float sleepDelta;
+  private float sleepStartTime;
   // Add new persistent variables here.
 
   // public seed randomSeed;
@@ -21,6 +24,17 @@ public class GameController: MonoBehaviour {
     } else if(control != this) {
       // There can be only one!
       Destroy(gameObject);
+    }
+  }
+
+  void Update() {
+    // See Sleep method:
+    if(sleep == true) {
+      Time.timeScale = 0f;
+      if(Time.realtimeSinceStartup - sleepStartTime >= sleepDelta) {
+        Time.timeScale = 1.0f;
+        sleep = false;
+      }
     }
   }
 
@@ -65,5 +79,11 @@ public class GameController: MonoBehaviour {
     public int experiencePoints;
     public int playerLevel;
     public int score;
+  }
+
+  public void Sleep(float delta) {
+    sleep = true;
+    sleepDelta = delta;
+    sleepStartTime = Time.realtimeSinceStartup;
   }
 }
