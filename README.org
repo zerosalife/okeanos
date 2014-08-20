@@ -137,8 +137,17 @@ To finish up
   PCs with clicks.
   - PCSpawner singleton?
 - [ ] Refactor Big Enemy class to Boss.
-- [ ] Enemy death animation via a delegate function that controls
+- [-] Enemy death animation via a delegate function that controls
   movement in the Update method.
+  - Spin the enemy while moving it off the bottom of the screen.
+  - [X] Add a flash to white effect with a shader.
+  - [ ] Add shader to Boss, as well.
+  - [ ] Freeze the game for 20 ms so there's some weight to the
+    collision.  Added bonus of letting the sound of the hit play out.
+    - Write a Sleep function for the GameController that uses
+      Time.timeScale to pause the game for a few ms.
+  - Some sort of explosion?
+- [ ] More bass in the hit sounds.
 - [ ] Pop up with exp gained when enemies are killed
 - [X] Dynamic PC placement by clicking.
 - [ ] Background

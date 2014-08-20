@@ -13,6 +13,8 @@ public class BlueFishController : MonoBehaviour {
 
   private bool alreadyCollided = false;
 
+  public Shader flashShader;
+
   // Use this for initialization
   void Start () {
     // Calculate the direction for knockback.
@@ -42,11 +44,14 @@ public class BlueFishController : MonoBehaviour {
         // player, seems like it's too complicated.  Just go ahead and
         // add experience directly to the GameController.control, just
         // like we do with the score below.
+
+        // Flash the sprite to white.
+        renderer.material.shader = flashShader;
+
         playerObject.SendMessage("AddExperience", experiencePoints);
         playerObject.SendMessage("Knockback", knockback);
         GameController.control.score += score;
 
-        gameObject.renderer.enabled = false; // Make the sprite disappear.
         alreadyCollided = true;
         yield return new WaitForSeconds(0.136f); // Wait for the audio to play.
         Destroy(this.gameObject);
