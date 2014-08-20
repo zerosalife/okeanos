@@ -13,8 +13,37 @@ public class BigBaddieController: MonoBehaviour {
 
   public AudioClip bigEnemyHit;
 
+  private Shader defaultShader;
+  public Shader colorTintShader;
+  private int stunnedFrames = 10;
+  private int stunnedCount = 10;
+
+
   void Start() {
     knockback = knockbackAmount * Vector3.down;
+    defaultShader = renderer.material.shader;
+  }
+
+  void Update() {
+    if(stunnedCount < stunnedFrames) {
+      stunnedCount++;
+      renderer.material.shader = colorTintShader;
+      renderer.material.SetColor("_Color1in",
+                                 new Color(0f, 86/255.0f, 134/255.0f));
+      Color c1 = new Color(Random.Range(0.0f, 1.0f),
+                           Random.Range(0.0f, 1.0f),
+                           Random.Range(0.0f, 1.0f));
+      Color c2 = new Color(Random.Range(0.0f, 1.0f),
+                           Random.Range(0.0f, 1.0f),
+                           Random.Range(0.0f, 1.0f));
+      renderer.material.SetColor("_Color1out", c1);
+      renderer.material.SetColor("_Color2out", c2);
+      Debug.Log(renderer.material.shader);
+    } else {
+      renderer.material.shader = defaultShader;
+      Debug.Log(renderer.material.shader);
+    }
+
   }
 
   IEnumerator OnTriggerEnter2D(Collider2D collision) {
@@ -30,6 +59,8 @@ public class BigBaddieController: MonoBehaviour {
         hitCounterControllerObject.SendMessage("DestroyHitCounter");
         audio.PlayOneShot(bigEnemyHit);
         enemyLevel++;
+
+        stunnedCount = 0;
 
         GameController.control.score += enemyScore;
         // Check for our death.
