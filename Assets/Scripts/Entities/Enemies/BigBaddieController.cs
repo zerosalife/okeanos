@@ -25,12 +25,12 @@ public class BigBaddieController: MonoBehaviour {
   void Update() {
     if(stunnedCount < stunnedFrames) {
       stunnedCount++;
-      Color c1 = new Color(Random.Range(0.0f, 1.0f),
-                           Random.Range(0.0f, 1.0f),
-                           Random.Range(0.0f, 1.0f));
-      Color c2 = new Color(Random.Range(0.0f, 1.0f),
-                           Random.Range(0.0f, 1.0f),
-                           Random.Range(0.0f, 1.0f));
+      Color c1 = new Color(Random.value,
+                           Random.value,
+                           Random.value);
+      Color c2 = new Color(Random.value,
+                           Random.value,
+                           Random.value);
       renderer.material.SetColor("_Color1out", c1);
       renderer.material.SetColor("_Color2out", c2);
     } else {
@@ -70,10 +70,9 @@ public class BigBaddieController: MonoBehaviour {
 
           // Go to win scene.
           Application.LoadLevel("WinScreen");
+        } else {
+          playerObject.SendMessage("Knockback", knockback);
         }
-
-        playerObject.SendMessage("Knockback", knockback);
-
 
       } else // if(playerScript.playerLevel < enemyLevel)
         // The player should die
