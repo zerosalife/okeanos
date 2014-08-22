@@ -39,9 +39,7 @@ public class BigBaddieController: MonoBehaviour {
       renderer.material.SetColor("_Color1out", c1);
       renderer.material.SetColor("_Color2out", c2);
     } else {
-      Color c1 = new Color(0.0f,
-                           85.0f/255.0f,
-                           136.0f/255.0f);
+      Color c1 = new Color32(0, 85, 136, 255);
       Color c2 = new Color(0.0f, 0.0f, 0.0f);
       renderer.material.SetColor("_Color1out", c1);
       renderer.material.SetColor("_Color2out", c2);
