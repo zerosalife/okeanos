@@ -16,10 +16,15 @@ public class BigBaddieController: MonoBehaviour {
 
   private int stunnedFrames = 10;
   private int stunnedCount = 10;
-
+  public Shader flashShader;
 
   void Start() {
     knockback = knockbackAmount * Vector3.down;
+
+    // Set up the material for the shader.
+    renderer.material = new Material(flashShader);
+    renderer.material.SetColor("_Color1in", new Color(1f, 1f, 1f, 1f));
+    renderer.material.SetColor("_Color2in", new Color(0f, 0f, 0f, 1f));
   }
 
   void Update() {
