@@ -8,6 +8,8 @@ public class ScreenShaker : MonoBehaviour {
   private float duration = 0.1f;
 
   void PlayShake(List<float> args) {
+    // Expects a list of args:
+    //   List<float> {magnitude, duration};
     shouldShake = true;
     magnitude = args[0];
     duration = args[1];
@@ -22,6 +24,8 @@ public class ScreenShaker : MonoBehaviour {
 
 
   IEnumerator Shake () {
+    // Original code at
+    // http://unitytipsandtricks.blogspot.com/2013/05/camera-shake.html
     float elapsed = 0.0f;
 
 
