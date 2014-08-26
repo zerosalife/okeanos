@@ -76,7 +76,7 @@ public class BigBaddieController: MonoBehaviour {
           Application.LoadLevel("WinScreen");
         } else {
           playerObject.SendMessage("Knockback", knockback);
-          Camera.main.SendMessage("PlayShake", new List<float>{0.5f, 0.2f});
+          Camera.main.SendMessage("PlayShake", new List<float>{0.1f, 0.1f});
         }
 
       } else // if(playerScript.playerLevel < enemyLevel)
