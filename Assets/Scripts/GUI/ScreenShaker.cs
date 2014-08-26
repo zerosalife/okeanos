@@ -30,16 +30,22 @@ public class ScreenShaker : MonoBehaviour {
 
 
     Vector3 originalCamPos = Camera.main.transform.position;
+    float randomStart = UnityEngine.Random.Range(-1000.0f, 1000.0f);
+    float speed = 1.0f;
+
 
     while(elapsed < duration) {
       elapsed += Time.deltaTime;
 
       float percentComplete = elapsed / duration;
+      // Reduce the power to 0, starting halfway through.
       float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
 
+      float alpha = randomStart + speed * percentComplete;
+
       // Map value to [-1, 1]
-      float x = UnityEngine.Random.value * 2.0f - 1.0f;
-      float y = UnityEngine.Random.value * 2.0f - 1.0f;
+      float x = Mathf.PerlinNoise(alpha, 0.0f) * 2.0f - 1.0f;
+      float y = Mathf.PerlinNoise(0.0f, alpha) * 2.0f - 1.0f;
       x *= magnitude * damper;
       y *= magnitude * damper;
 
