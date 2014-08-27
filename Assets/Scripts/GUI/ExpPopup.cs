@@ -18,4 +18,7 @@ public class ExpPopup : MonoBehaviour {
     Destroy(gameObject, timeToFade);
   }
 
+  void SetText(int xp) {
+    guiText.text = "+ " + xp + " exp";
+  }
 }

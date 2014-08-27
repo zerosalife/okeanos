@@ -59,7 +59,7 @@ public class BlueFishController : MonoBehaviour {
         guiExpPopup = Instantiate(guiExpPopupPrefab,
                                   Camera.main.WorldToViewportPoint(gameObject.transform.position),
                                   Quaternion.identity) as GameObject;
-        guiExpPopup.guiText.text = "+ " + experiencePoints + " exp";
+        guiExpPopup.SendMessage("SetText", experiencePoints);
 
         playerObject.SendMessage("Knockback", knockback);
         GameController.control.score += score;
