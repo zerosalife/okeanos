@@ -15,6 +15,11 @@ public class BlueFishController : MonoBehaviour {
 
   public Shader flashShader;
 
+  // For the Experience popup
+  public GameObject guiExpPopupPrefab;
+  private GameObject guiExpPopup;
+
+
   // Use this for initialization
   void Start () {
     // Calculate the direction for knockback.
@@ -49,6 +54,13 @@ public class BlueFishController : MonoBehaviour {
         renderer.material.shader = flashShader;
 
         playerObject.SendMessage("AddExperience", experiencePoints);
+
+        // Instantiate exp popup.
+        guiExpPopup = Instantiate(guiExpPopupPrefab,
+                                  Camera.main.WorldToViewportPoint(gameObject.transform.position),
+                                  Quaternion.identity) as GameObject;
+        guiExpPopup.guiText.text = "+ " + experiencePoints + " exp";
+
         playerObject.SendMessage("Knockback", knockback);
         GameController.control.score += score;
 

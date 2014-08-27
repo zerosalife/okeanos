@@ -141,15 +141,17 @@ To finish up
   movement in the Update method.
   - Spin the enemy while moving it off the bottom of the screen.
   - [X] Add a flash to white effect with a shader.
-  - [ ] Add shader to Boss, as well.
-  - [ ] Freeze the game for 20 ms so there's some weight to the
+  - [X] Add shader to Boss, as well.
+  - [X] Freeze the game for 20 ms so there's some weight to the
     collision.  Added bonus of letting the sound of the hit play out.
     - Write a Sleep function for the GameController that uses
       Time.timeScale to pause the game for a few ms.
   - Some sort of explosion?
-- [ ] More bass in the hit sounds.
-- [ ] Pop up with exp gained when enemies are killed
+  - [ ] Enemy death animation
+- [X] More bass in the hit sounds.
+- [X] Pop up with exp gained when enemies are killed
 - [X] Dynamic PC placement by clicking.
+- [ ] Screenshake when the player dies
 - [ ] Background
 - [ ] Winning screen
 - [ ] Change winning and gameover from scenes to a simple overlay
@@ -162,9 +164,11 @@ To finish up
     remains on the screen.
   - May be as simple as adding UI stuff to a layer on top of
     everything else?
-- [ ] Screenshake when the player dies
 - [ ] scale buttons to screen size
-- [ ] Animate fish when it spawns so it's clear there was some
-  interaction by the player.
+- [X] Animate fish when it spawns so it's clear there was some
+  interaction by the player.  (Don't think we need this now that the
+  fish is visible on screen prior to spawning).
 - [ ] Dynamic enemy placement.
+- [ ] Enemies contained in some empty parent gameobject to clean up
+  the scenes.
 - [ ] Add V0.2 tag / milestone
