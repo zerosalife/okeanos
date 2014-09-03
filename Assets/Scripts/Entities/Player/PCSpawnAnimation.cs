@@ -27,7 +27,7 @@ public class PCSpawnAnimation : MonoBehaviour {
     pc.enabled = true;
     PCSpawner.isSwimming = true;
 
-    Destroy(this);
+    this.enabled = false;
 
   }
 
