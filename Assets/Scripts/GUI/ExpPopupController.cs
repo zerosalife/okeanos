@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ExpPopup : MonoBehaviour {
+public class ExpPopupController : MonoBehaviour {
   private float _time;
   public float timeToFade;
 
