@@ -13,8 +13,10 @@ public class ExpPopup : MonoBehaviour {
     transform.Translate(new Vector3(0f, 0.001f, 0f));
     // Fade the alpha out over time.
     Color fadeAlpha = guiText.material.color;
+    // At timeToFade, the alpha will approach 0.
     fadeAlpha.a = Mathf.Cos((Time.time - _time) * ((Mathf.PI/2)/timeToFade));
     guiText.material.color = fadeAlpha;
+    // At timeToFade, we destroy this gameObject.
     Destroy(gameObject, timeToFade);
   }
 

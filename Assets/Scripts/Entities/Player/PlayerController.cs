@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-  private bool canSpawn;
   private Vector3 currentPosition;
   public float moveSpeed = 1.5f;
 
