@@ -11,7 +11,8 @@ public class PCSpawner : MonoBehaviour {
   private float playerSpawnY = -4.259603f;
   private float playerSpawnX = 0f;
   private PlayerController pc;
-  public bool isSwimming;
+  public PCSpawnAnimation pcsa;
+  public static bool isSwimming;
 
   void Awake() {
     if(spawner == null) {
@@ -32,7 +33,8 @@ public class PCSpawner : MonoBehaviour {
                                Quaternion.identity) as GameObject;
     pc = playerObject.GetComponent<PlayerController>();
     pc.enabled = false;
-
+    pcsa = playerObject.GetComponent<PCSpawnAnimation>();
+    pcsa.enabled = false;
   }
 
   // Update is called once per frame
@@ -47,8 +49,7 @@ public class PCSpawner : MonoBehaviour {
         playerObject.transform.position = new Vector3(mPos.x,
                                                       playerSpawnY,
                                                       0f);
-        pc.enabled = true;
-        isSwimming = true;
+        pcsa.enabled = true;
       }
     }
   }
