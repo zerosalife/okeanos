@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour {
 
     // If we're off the top of the screen, go to the next screen.
     if(currentPosition.y >= 5.5) {
+      // Need to make sure current player state information is saved.
       Application.LoadLevel("Level02");
+
     }
 
   }

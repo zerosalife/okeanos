@@ -100,21 +100,6 @@ To finish up
     - [[http://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/persistence-data-saving-loading]]
 - [X] Clean up git.
 - [X] Refactor code to use GameManager.
-- [-] Orbs floating around big baddie to communicate required
-  hits-to-kill remaining. (i.e. if the baddie starts at enemyLevel 1
-  and requires enemyLevel 3 to be killed, 3 orbs counting down with
-  each hit.)
-  - [[http://www.helixsoft.nl/articles/circle/sincos.htm]]
-  - [[http://unitygems.com/basic-ai-space-shooter/]]
-  - [X] For now do it the easy way, stup.
-  - [-] HitCounterController Script attached to empty gameobject
-    - [X] Has a HitCounter prefab
-    - [ ] Receive message from BigBaddie to spawn number of HitCounters
-      - =transform.RotateAround= will probably be helpful.
-    - [X] Store a list of HitCounters in order (clockwise or
-      counterclockwise).
-    - [X] Receive message from BigBaddie to destroy HitCounter
-    - [X] Add a real sprite.
 - [X] Display Score, Level, Exp
 - [ ] Main theme upbeat, lively, boppy, sort of like zelda overworld
   theme.
@@ -132,11 +117,6 @@ To finish up
   - [ ] Player Death.
 - [X] license
 - [X] add Ideas to .gitignore
-- [ ] Refactor Player class to be PC to reflect the fact that if this
-  thang is Pachinko-like, the player will be able to spawn multiple
-  PCs with clicks.
-  - PCSpawner singleton?
-- [ ] Refactor Big Enemy class to Boss.
 - [-] Enemy death animation via a delegate function that controls
   movement in the Update method.
   - Spin the enemy while moving it off the bottom of the screen.
@@ -151,6 +131,17 @@ To finish up
 - [X] More bass in the hit sounds.
 - [X] Pop up with exp gained when enemies are killed
 - [X] Dynamic PC placement by clicking.
+- [X] Animate fish when it spawns so it's clear there was some
+  interaction by the player.  (Don't think we need this now that the
+  fish is visible on screen prior to spawning).
+  - [X] Have the PC fade-in when spawned?
+- [X] Refactor Player class to be PC to reflect the fact that if this
+  thang is Pachinko-like, the player will be able to spawn multiple
+  PCs with clicks.
+  - PCSpawner singleton?
+- [ ] Refactor Big Enemy class to Boss.
+- [ ] Refactor Destroying things to take advantage of the [[http://docs.unity3d.com/ScriptReference/Object.Destroy.html][second
+  parameter to Destroy]], destroy =t= seconds from now.
 - [ ] Screenshake when the player dies
 - [ ] Background
 - [ ] Winning screen
@@ -165,10 +156,26 @@ To finish up
   - May be as simple as adding UI stuff to a layer on top of
     everything else?
 - [ ] scale buttons to screen size
-- [X] Animate fish when it spawns so it's clear there was some
-  interaction by the player.  (Don't think we need this now that the
-  fish is visible on screen prior to spawning).
 - [ ] Dynamic enemy placement.
 - [ ] Enemies contained in some empty parent gameobject to clean up
   the scenes.
+- [-] Orbs floating around big baddie to communicate required
+  hits-to-kill remaining. (i.e. if the baddie starts at enemyLevel 1
+  and requires enemyLevel 3 to be killed, 3 orbs counting down with
+  each hit.)
+  - [[http://www.helixsoft.nl/articles/circle/sincos.htm]]
+  - [[http://unitygems.com/basic-ai-space-shooter/]]
+  - [X] For now do it the easy way, stup.
+  - [-] HitCounterController Script attached to empty gameobject
+    - [X] Has a HitCounter prefab
+    - [ ] Receive message from BigBaddie to spawn number of HitCounters
+      - =transform.RotateAround= will probably be helpful.
+    - [X] Store a list of HitCounters in order (clockwise or
+      counterclockwise).
+    - [X] Receive message from BigBaddie to destroy HitCounter
+    - [X] Add a real sprite.
 - [ ] Add V0.2 tag / milestone
+- [ ] Level02 assumes the player will be a typical PC fish that is
+  already moving and is not an instance of the prefab PC.  That is to
+  say, it's not the same instance as the spawned fish in the previous
+  scene.  It's got the same stats though thanks to the GameController.
