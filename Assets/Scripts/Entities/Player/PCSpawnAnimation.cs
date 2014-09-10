@@ -17,6 +17,9 @@ public class PCSpawnAnimation : MonoBehaviour {
     // Evaluate the animation curve normalized to the total duration
     // of the animation to determine a multiplicative factor for
     // scaling.
+    //
+    // The animation curve is adjusted by hand in the editor, but it
+    // is close to the formula -0.2sin(x*2pi) + 1
     float factor = scaleCurve.Evaluate((Time.time - _time) / duration);
     gameObject.transform.localScale = scale * factor;
 
