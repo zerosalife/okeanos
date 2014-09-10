@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class BigBaddieController: MonoBehaviour {
+public class BossController: MonoBehaviour {
 
   public int hitsRequired;
   public int enemyLevel;    // The effective level required to hit the
@@ -26,6 +26,10 @@ public class BigBaddieController: MonoBehaviour {
     renderer.material = new Material(flashShader);
     renderer.material.SetColor("_Color1in", new Color(1f, 1f, 1f, 1f));
     renderer.material.SetColor("_Color2in", new Color(0f, 0f, 0f, 1f));
+    renderer.material.SetColor("_Color1out", new Color32(0, 85, 136, 255));
+    renderer.material.SetColor("_Color2out", new Color32(0, 0, 0, 255));
+
+
   }
 
   void Update() {
