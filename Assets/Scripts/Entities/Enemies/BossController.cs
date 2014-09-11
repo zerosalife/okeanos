@@ -26,10 +26,6 @@ public class BossController: MonoBehaviour {
     renderer.material = new Material(flashShader);
     renderer.material.SetColor("_Color1in", new Color(1f, 1f, 1f, 1f));
     renderer.material.SetColor("_Color2in", new Color(0f, 0f, 0f, 1f));
-    renderer.material.SetColor("_Color1out", new Color32(0, 85, 136, 255));
-    renderer.material.SetColor("_Color2out", new Color32(0, 0, 0, 255));
-
-
   }
 
   void Update() {
@@ -53,7 +49,7 @@ public class BossController: MonoBehaviour {
 
   }
 
-  IEnumerator OnTriggerEnter2D(Collider2D collision) {
+  void OnTriggerEnter2D(Collider2D collision) {
     if(collision.gameObject.tag == "Player") {
       GameObject playerObject = GameObject.FindGameObjectsWithTag("Player")[0];
 
@@ -73,8 +69,7 @@ public class BossController: MonoBehaviour {
         // Check for our death.
         if(hitsRequired <= 0) {
           gameObject.renderer.enabled = false; // Make the sprite disappear.
-          yield return new WaitForSeconds(0.397f);
-          Destroy(this.gameObject);
+          Destroy(this.gameObject, 0.397f);
 
           // Go to win scene.
           Application.LoadLevel("WinScreen");
