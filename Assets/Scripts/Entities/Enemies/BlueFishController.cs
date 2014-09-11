@@ -28,7 +28,7 @@ public class BlueFishController : MonoBehaviour {
 
 
 
-  IEnumerator OnTriggerEnter2D(Collider2D collision) {
+  void OnTriggerEnter2D(Collider2D collision) {
     // If we collide with the player, add our experience points
     // `experiencePoints' to the player's experience, knock the player
     // back by `knockbackAmount', and destroy ourself.
@@ -65,8 +65,7 @@ public class BlueFishController : MonoBehaviour {
         GameController.control.score += score;
 
         alreadyCollided = true;
-        yield return new WaitForSeconds(0.136f); // Wait for the audio to play.
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 0.136f);
       } else if(GameController.control.playerLevel < experiencePoints) {
         // We are stronger than the player. So, kill the player.
         playerObject.SendMessage("Die");
