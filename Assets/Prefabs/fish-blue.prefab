@@ -134,6 +134,10 @@ MonoBehaviour:
   enemyHit: {fileID: 8300000, guid: 0e5eec07638fb4c3da58aaa7586f54e1, type: 3}
   flashShader: {fileID: 4800000, guid: 03713c55ea1c140ed8282347124e3f1e, type: 3}
   guiExpPopupPrefab: {fileID: 100000, guid: 6a5a9d661a62c459ea4d22b355046fa0, type: 2}
+  xLim: 2
+  yLims:
+  - 0
+  - -2
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,11 +19,27 @@ public class BlueFishController : MonoBehaviour {
   public GameObject guiExpPopupPrefab;
   private GameObject guiExpPopup;
 
+  // Limits for spawning
+  public float xLim;                     // Single number ±
+  public float[] yLims = new float[2];   // 0: Top number (closer to
+                                         // 0, the top of the screen)
+                                         // and 1: bottom number
+
 
   // Use this for initialization
   void Start () {
     // Calculate the direction for knockback.
     knockback = knockbackAmount * Vector3.down;
+
+    // Randomly place the enemy within a predetermined XY area.
+    float topFence = yLims[0];
+    float botFence = yLims[1];
+    float yCoord = Random.Range(topFence, botFence);
+    float xCoord = Random.Range(-xLim, xLim);
+    Vector3 position = gameObject.transform.position;
+    position.y = yCoord;
+    position.x = xCoord;
+    gameObject.transform.position = position;
   }
 
 

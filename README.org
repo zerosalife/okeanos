@@ -150,6 +150,10 @@ To finish up
   the scenes.
 - [ ] scale buttons to screen size
 - [ ] Dynamic enemy placement.
+  - [ ] Add XY limit strata data to GameController
+  - [ ] Add a number of enemies to spawn to the GameController
+  - [ ] Add an intermediary EnemySpawner to control the number of
+    enemy prefab instances to spawn.
 - [ ] Winning screen
 - [-] Orbs floating around big baddie to communicate required
   hits-to-kill remaining. (i.e. if the baddie starts at enemyLevel 1
@@ -167,20 +171,20 @@ To finish up
     - [X] Receive message from BigBaddie to destroy HitCounter
     - [X] Add a real sprite.
 - [ ] Screenshake when the player dies
-- [ ] Background
 - [ ] Change winning and gameover from scenes to a simple overlay
   script attached to the GameManager script that activates at the
   right time to show the score.
-- [ ] Gameover
-  - When you die, a lot of other fish come in from off-screen and
-    eat the PC, causing it to dissolve and become bones.
   - [ ] use modal dialog to display score so the background scene
     remains on the screen.
   - May be as simple as adding UI stuff to a layer on top of
     everything else?
+- [ ] Gameover Animation
+  - When you die, a lot of other fish come in from off-screen and
+    eat the PC, causing it to dissolve and become bones.
 - [ ] Add V0.2 tag / milestone
 - [ ] Level02 hardcodes PC instance and position: Level02 assumes the
   player will be a typical PC fish that is already moving and is not
   an instance of the prefab PC.  That is to say, it's not the same
   instance as the spawned fish in the previous scene.  It's got the
   same stats though thanks to the GameController.
+- [ ] Background
