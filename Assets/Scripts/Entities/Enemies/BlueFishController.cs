@@ -17,6 +17,7 @@ public class BlueFishController : MonoBehaviour {
 
   // For the Experience popup
   public GameObject guiExpPopupPrefab;
+  public float guiExpPopupYOffset;
   private GameObject guiExpPopup;
 
   // Limits for spawning
@@ -72,8 +73,10 @@ public class BlueFishController : MonoBehaviour {
         playerObject.SendMessage("AddExperience", experiencePoints);
 
         // Instantiate exp popup.
+        Vector3 guiExpPopupPos = gameObject.transform.position;
+        guiExpPopupPos.y += guiExpPopupYOffset;
         guiExpPopup = Instantiate(guiExpPopupPrefab,
-                                  Camera.main.WorldToViewportPoint(gameObject.transform.position),
+                                  Camera.main.WorldToViewportPoint(guiExpPopupPos),
                                   Quaternion.identity) as GameObject;
         guiExpPopup.SendMessage("SetText", experiencePoints);
 
