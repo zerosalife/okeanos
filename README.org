@@ -150,9 +150,9 @@ To finish up
   the scenes.
 - [ ] scale buttons to screen size
 - [ ] Dynamic enemy placement.
-  - [ ] Add XY limit strata data to GameController
-  - [ ] Add a number of enemies to spawn to the GameController
-  - [ ] Add an intermediary EnemySpawner to control the number of
+  - [ ] Add XY limit strata data to LevelController
+  - [ ] Add a number of enemies to spawn to the LevelController
+  - [ ] Add an intermediary LevelController to control the number of
     enemy prefab instances to spawn.
 - [ ] Winning screen
 - [-] Orbs floating around big baddie to communicate required
