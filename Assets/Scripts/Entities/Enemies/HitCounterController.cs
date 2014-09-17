@@ -8,13 +8,13 @@ public class HitCounterController : MonoBehaviour {
   public List<GameObject> hitCounters = new List<GameObject>();
 
   public GameObject baseEnemy;
-  private Transform baseTransform;
+  // private Transform baseTransform;
 
   public Vector3 radius;
 
 
   void Start() {
-    baseTransform = baseEnemy.transform;
+    // baseTransform = baseEnemy.transform;
   }
 
   void SpawnHitCounters(int numberToSpawn) {
