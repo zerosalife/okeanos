@@ -10,6 +10,7 @@ public class GameController: MonoBehaviour {
   public int experiencePoints;
   public int playerLevel;
   public int score;
+  public int stage;
   private bool sleep = false;
   private float sleepDelta;
   private float sleepStartTime;
@@ -49,6 +50,7 @@ public class GameController: MonoBehaviour {
     data.experiencePoints = experiencePoints;
     data.playerLevel = playerLevel;
     data.score = score;
+    data.stage = stage;
 
     bf.Serialize(file, data);
     file.Close();
@@ -79,6 +81,7 @@ public class GameController: MonoBehaviour {
     public int experiencePoints;
     public int playerLevel;
     public int score;
+    public int stage;
   }
 
   public void Sleep(float delta) {
