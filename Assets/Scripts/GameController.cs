@@ -89,4 +89,12 @@ public class GameController: MonoBehaviour {
     sleepDelta = delta;
     sleepStartTime = Time.realtimeSinceStartup;
   }
+
+  public void Reset() {
+    score = 0;
+    playerLevel = 1;
+    experiencePoints = 0;
+    stage = 0;
+
+  }
 }

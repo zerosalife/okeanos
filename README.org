@@ -54,6 +54,8 @@ Clams
 When you die, a lot of other fish come in from off-screen and eat the
 PC, causing it to dissolve and become bones.
 
+[[https://twitter.com/Korigame/status/506939482776829952/photo/1][Cool fish design reference]]
+
 *** Terrain
 water currents that transport you quickly, maybe laterally?
 ** Power ups
@@ -149,11 +151,14 @@ To finish up
 - [X] Enemies contained in some empty parent gameobject to clean up
   the scenes.
 - [ ] scale buttons to screen size
-- [ ] Dynamic enemy placement.
-  - [ ] Add XY limit strata data to LevelController
-  - [ ] Add a number of enemies to spawn to the LevelController
-  - [ ] Add an intermediary LevelController to control the number of
+- [X] Dynamic enemy placement.
+  - [X] Add XY limit strata data to LevelController
+  - [X] Add an intermediary LevelController to control the number of
     enemy prefab instances to spawn.
+  - [X] Add a number of enemies to spawn to the LevelController
+  - [X] Put the LevelController in the Level01 Scene and test it.
+- [ ] Refactor player controller script to include player bump
+  controller script to handle combat same with enemies
 - [ ] Winning screen
 - [-] Orbs floating around big baddie to communicate required
   hits-to-kill remaining. (i.e. if the baddie starts at enemyLevel 1

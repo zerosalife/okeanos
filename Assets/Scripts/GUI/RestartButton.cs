@@ -4,7 +4,10 @@ using System.Collections;
 public class RestartButton: MonoBehaviour {
 
   void Awake() {
+    // Clear the instances of various spawners and controllers that
+    // are only needed for a single playthrough.
     PCSpawner.spawner.Clear();
+    LevelController.control.Clear();
   }
 
   void OnGUI() {
