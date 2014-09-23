@@ -69,9 +69,21 @@ public class LevelController: MonoBehaviour {
     Destroy(this.gameObject);
   }
 
-  public static int GetEnemyTypeCount() {
-    return enemyTypeCount;
+  [System.Serializable]
+  public class LevelArray {
+    public int[] enemyTypeSpawnArray = new int[enemyTypeCount];
+
+    public int this[int index] {
+      get {
+        return enemyTypeSpawnArray[index];
+      }
+
+      set {
+        enemyTypeSpawnArray[index] = value;
+      }
+    }
   }
+
 
 }
 
@@ -88,20 +100,5 @@ public class SpawnCoords {
     this.yLims = yLims;
     this.rotation = rotation;
 
-  }
-}
-
-[System.Serializable]
-public class LevelArray {
-  public int[] enemyTypeSpawnArray = new int[8];
-
-  public int this[int index] {
-    get {
-      return enemyTypeSpawnArray[index];
-    }
-
-    set {
-      enemyTypeSpawnArray[index] = value;
-    }
   }
 }
